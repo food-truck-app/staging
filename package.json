@@ -20,7 +20,10 @@
   "dependencies": {
     "express": "^4.13.3",
     "mongodb": "^2.0.43",
-    "mongoose": "^4.1.7"
+    "mongoose": "^4.1.7",
+    "eat": "^0.1.0",
+    "body-parser": "^1.13.0",
+    "bcrypt": "^0.8.4"
   },
   "devDependencies": {
     "chai": "^3.3.0",

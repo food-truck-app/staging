@@ -46,7 +46,7 @@ exports.authenticateUser = function(req, res) {
 			} else if(!isMatch) {
 				res.json({msg: 'Incorrect password'});
 			} else {
-				res.json({'successful login'});
+				res.json({msg: 'successful login'});
 			}
 		});
 	});

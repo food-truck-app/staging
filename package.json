@@ -25,7 +25,8 @@
     "body-parser": "^1.13.0",
     "bcrypt": "^0.8.4",
     "passport": "^0.3.0",
-    "passport-http": "^0.3.0"
+    "passport-http": "^0.3.0",
+    "mongoose-simple-random": "^0.3.3"
   },
   "devDependencies": {
     "chai": "^3.3.0",

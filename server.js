@@ -3,7 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/food_truck_app');
 
-var trucksRouter = require(__dirname + '/routes/routes');
+var trucksRouter = require(__dirname + '/routes/trucks_routes');
 app.use('/api', trucksRouter);
 
 var port = process.env.PORT || 3000;

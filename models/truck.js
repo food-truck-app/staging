@@ -6,13 +6,13 @@ var truckSchema = new mongoose.Schema({
   description: String,
   menu: [{item: String}],
   locations: {
-    monday: { lat: Number, lon: Number },
-    tuesday: { lat: Number, lon: Number },
-    wednesday: { lat: Number, lon: Number },
-    thursday: { lat: Number, lon: Number },
-    friday: { lat: Number, lon: Number },
-    satday: { lat: Number, lon: Number },
-    sunday: { lat: Number, lon: Number },
+    monday: { name: String, lat: Number, lon: Number },
+    tuesday: { name: String, lat: Number, lon: Number },
+    wednesday: { name: String, lat: Number, lon: Number },
+    thursday: { name: String, lat: Number, lon: Number },
+    friday: { name: String, lat: Number, lon: Number },
+    satday: { name: String, lat: Number, lon: Number },
+    sunday: { name: String, lat: Number, lon: Number },
   }
 });
 

@@ -13,6 +13,24 @@ trucksRoute.get('/trucks', function(req, res) {
   });
 });
 
+trucksRoute.get('/trucks/:id', function(req, res) {
+  Truck.findById(req.params.id, function(err, truck) {
+    if (err) return handleError(err, res);
+    res.json(truck);
+  });
+});
+
+trucksRoute.get('/trucks/:day/:lng/:lat', function(req, res) {
+  Truck.find({
+    locations[req.params.day].loc: {
+      $near: [req.params.lng, req.params.lat]
+    }
+  }).limit(5).exec(function(err, trucks) {
+    if (err) return handleError(err, res);
+    res.json(trucks);
+  });
+});
+
 trucksRoute.post('/trucks', jsonParser, function(req, res) {
   var newTruck = new Truck(req.body);
   newTruck.save(function(err, data) {

@@ -40,7 +40,7 @@ userRouter.get('/signin', httpBasic, function(req, res) {
     if (err) return handleError(err, res);
     if (!user) {
       console.log('could not authenticate');
-      return res.status(401).json({msg: 'could not authenticate inside findOne(username)'});
+      return res.status(401).json({msg: 'could not authenticate'});
     }
     ee.emit('compareHashRoute', req, res, user);
   });

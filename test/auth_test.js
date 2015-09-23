@@ -66,6 +66,7 @@ describe('should be able to look up a user in database', function() {
 			.get('/signin')
 			.auth('test2', 'foobar789')
 			.end(function(err, res) {
+				debugger;
 				expect(err).to.eql(null);
 				expect(res.body.token).to.have.length.above(0); //cant find length of undefined
 				done();

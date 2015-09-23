@@ -71,13 +71,16 @@
         $.ajax({
           url: "/api/trucks",
           dataType: "json"
-        }).success(function (data) {
-          console.log(data);
+          }).success(function (data) {
           var locations = [];
+          var date = new Date();
+          var dateDay = date.getDay();
+          var dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          var day = dayArray[dateDay].toLowerCase();
+
           for (var i = 0; i < data.length; i++) {
-            locations.push([data[i].truckname, data[i].locations.thursday.loc[1], data[i].locations.thursday.loc[0], i]); 
+            locations.push([data[i].truckname || data[i].locations[day].name, data[i].locations[day].loc[1], data[i].locations[day].loc[0], i]); 
           }
-          console.log(locations);
 
           var infowindow = new google.maps.InfoWindow();
           var marker, i;
@@ -85,9 +88,8 @@
             marker = new google.maps.Marker({
               position: new google.maps.LatLng(locations[i][1], locations[i][2]),
               map: map, 
-              title: locations[i][0] || "Unnamed Food Truck Yo"
+              title: locations[i][0]
             });
-            console.log(locations[i][0]);
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
                 console.log(marker);

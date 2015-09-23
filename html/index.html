@@ -90,6 +90,7 @@
             password: $('#passwordSU').val()
           }),
           success: function(data) {
+            if(!data.token) {return authError();}
             authSuccess(data.token);
           },
           error: function() {
@@ -98,22 +99,6 @@
         });
       }
     });  
-
-      function newUserSuccess(token) {
-        //
-      }
-
-      // function newUserError() {
-      //    $('#signup').append('\
-      //     <div class="row"> \
-      //       <div class="col-md-12 text-center"> \
-      //         <p>Username already exists. Please retry.</p> \
-      //       </div> \
-      //     </div> \
-      //   ');
-      // }
-
-
 
     </script>
   </body>

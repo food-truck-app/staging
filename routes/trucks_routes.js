@@ -13,7 +13,6 @@ trucksRoute.get('/trucks', function(req, res) {
   });
 });
 
-
 trucksRoute.get('/trucks/:id', function(req, res) { // to get each truck data
   Truck.findById({_id: req.params.id}, function(err, data) {
     if (err) return handleError(err, res);

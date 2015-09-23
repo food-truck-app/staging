@@ -21,9 +21,9 @@ trucksRoute.get('/trucks/:id', function(req, res) { // to get each truck data
   });
 });
 
-trucksRoute.get('/trucks/:cuisine', function(req, res) {
+trucksRoute.get('/trucks/cuisine/:cuisine', function(req, res) {
   var cuisine = req.params.cuisine;
-  Truck.find(cuisine, function(err, trucks) {
+  Truck.find({'cuisine': cuisine}, function(err, trucks) {
     if (err) return handleError(err, res);
     res.json(trucks);
   });

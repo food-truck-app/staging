@@ -2,7 +2,7 @@ var chai = require('chai');
 var chaiHTTP = require('chai-http');
 chai.use(chaiHTTP);
 var expect = chai.expect;
-process.env.MONGO_URL = 'mongodb://localhost/food_truck_app_test';
+process.env.MONGO_URL = 'mongodb://localhost/food_truck_app_auth_test';
 require(__dirname + '/../server');
 var mongoose = require('mongoose');
 var User = require(__dirname + '/../models/user');

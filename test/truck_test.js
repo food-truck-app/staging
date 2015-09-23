@@ -203,5 +203,15 @@ describe('the truck resource', function() {
           done();
         });
     });
+
+    it('should be able to select a random truck', function(done) {
+      chai.request(server_url)
+        .get('/trucks/random/random')
+        .end(function(err, res) {
+          expect(err).to.eql(null);
+          expect(res).to.have.status(200);
+          done();
+        });
+    });
   });
 });

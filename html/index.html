@@ -17,6 +17,7 @@
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4 well">
+          <h4> Sign in</h4>
           <input type="text" class="form-control" placeholder="Username" id="username">
           <br>
           <input type="password" class="form-control" placeholder="Password" id="password">
@@ -26,6 +27,21 @@
         <div class="col-md-4"></div>
       </div>
     </div>
+
+    <div class="container" id="signup">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 well">
+          <h4>Sign up</h4>
+          <input type ="text" class="form-control" placeholder="Username" id="usernameSU">
+          <br>
+          <input type="password" class="form-control" placeholder="Password" id="passwordSU">
+          <br>
+          <button class ="btn btn-default center-block" id="signupBtn">Sign Up</button>
+        </div> 
+        </div class="col-md-4"></div> 
+      </div>
+    </div>  
     <script type="text/javascript">
 
       $('#login').click(function() {
@@ -47,7 +63,7 @@
         }
       });
 
-      function authError() {
+        function authError() {
         $('#main-body-container').append('\
           <div class="row"> \
             <div class="col-md-12 text-center"> \
@@ -60,7 +76,29 @@
       function authSuccess(token) {
         sessionStorage.setItem('app_token', token);
         window.location = '/app';
+      }  
+
+    $('#signupBtn').click(function() {
+      if($('#usernameSU').length > 0 && $('#passwordSU').length > 0) {
+        $.ajax({
+          type: 'post',
+          url: '/api/signup',
+          contentType: 'application/json',
+          dataType: 'json',
+          data: JSON.stringify({
+            username: $('#usernameSU').val(),
+            password: $('#passwordSU').val()
+          }),
+          success: function(data) {
+            if(!data.token) {return authError();}
+            authSuccess(data.token);
+          },
+          error: function() {
+            authError();
+          }
+        });
       }
+    });  
 
     </script>
   </body>

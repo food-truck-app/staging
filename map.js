@@ -1,14 +1,16 @@
 var locations = [
-  ['Bondi Beach', -33.890542, 151.274856, 4],
-  ['Coogee Beach', -33.923036, 151.259052, 5],
-  ['Cronulla Beach', -34.028249, 151.157507, 3],
-  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-  ['Maroubra Beach', -33.950198, 151.259302, 1]
+  ['Explosiv', 47.623380, -122.335773, 7],
+  ["Sam Choy\'s Poke", 47.623229, -122.337320, 6],
+  ['Pie Pie', 47.623380, -122.335853, 5],
+  ['Hungry Me', 47.623385, -122.335778, 4],
+  ['Buddah Bruddah', 47.623234, -122.337325, 3],
+  ['Tacos El Tajin', 47.623390, -122.335783, 2],
+  ['Djung On Wheels', 47.623393, -122.335858, 1]
 ];
 
 var map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 10,
-  center: new google.maps.LatLng(-33.92, 151.25),
+  zoom: 17,
+  center: new google.maps.LatLng(47.623553, -122.335827),
   mapTypeId: google.maps.MapTypeId.ROADMAP
 });
 

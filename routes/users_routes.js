@@ -47,9 +47,9 @@ userRouter.get('/signin', httpBasic, function(req, res) {
 });
 
 ee.on('compareHashRoute', function(req, res, user) {
-  user.compareHash(req.auth.password, function(err, hashReq) {
+  user.compareHash(req.auth.password, function(err, hashRes) {
     if (err) return handleError(err, res);
-    if (!hashReq) {
+    if (!hashRes) {
       return res.status(401).json({msg: 'could not authenticate'});
     }
     ee.emit('generateTokenRoute', req, res, user);

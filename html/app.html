@@ -40,18 +40,6 @@
                 <li><a href="#">Other</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Day of the Week<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Monday</a></li>
-                <li><a href="#">Tuesday</a></li>
-                <li><a href="#">Wednesday</a></li>
-                <li><a href="#">Thursday</a></li>
-                <li><a href="#">Friday</a></li>
-                <li><a href="#">Saturday</a></li>
-                <li><a href="#">Sunday</a></li>
-              </ul>
-            </li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -66,7 +54,6 @@
       </div>
     </div>
     <script type="text/javascript">
-
       function logout() {
         sessionStorage.clear();
         window.location = '/';
@@ -80,7 +67,38 @@
           center: new google.maps.LatLng(47.623553, -122.335827),
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
+        
+        $.ajax({
+          url: "/api/trucks",
+          dataType: "json"
+        }).success(function (data) {
+          console.log(data);
+          var locations = [];
+          for (var i = 0; i < data.length; i++) {
+            locations.push([data[i].truckname, data[i].locations.thursday.loc[1], data[i].locations.thursday.loc[0], i]); 
+          }
+          console.log(locations);
 
+          var infowindow = new google.maps.InfoWindow();
+          var marker, i;
+          for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+              map: map, 
+              title: locations[i][0] || "Unnamed Food Truck Yo"
+            });
+            console.log(locations[i][0]);
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                console.log(marker);
+                infowindow.setContent(marker.title);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+          }
+        });
+
+      /*
         var locations = [
           ['Explosiv', 47.623380, -122.335773, 7],
           ["Sam Choy\'s Poke", 47.623229, -122.337320, 6],
@@ -90,24 +108,7 @@
           ['Tacos El Tajin', 47.623390, -122.335783, 2],
           ['Djung On Wheels', 47.623393, -122.335858, 1]
         ];
-
-        var infowindow = new google.maps.InfoWindow();
-
-        var marker, i;
-
-        for (i = 0; i < locations.length; i++) {  
-          marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            map: map
-          });
-
-          google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-              infowindow.setContent(locations[i][0]);
-              infowindow.open(map, marker);
-            }
-          })(marker, i));
-        }
+      */
       }
 
       $(document).ready(function() {
@@ -115,34 +116,6 @@
         initMap();
       });
 
-      // function getLocation() {
-      //   if ('geolocation' in navigator) {
-      //     var coords = navigator.geolocation.getCurrentPosition(function(position) {
-      //       return [position.coords.latitude, position.coords.longitude];
-      //     });
-      //     return coords;
-      //   } else {
-      //     return false;
-      //   }
-      // }
-
-      // function loadMap(coords) {
-      //   var map = new google.maps.Map(document.getElementById('map'), {
-      //     zoom: 10,
-      //     center: new google.maps.LatLng(coords[0], coords[1]),
-      //     mapTypeId: google.maps.mapTypeId.ROADMAP
-      //   });
-      // }
-
-      // $(document).ready(function() {
-      //   if (!sessionStorage.getItem('app_token')) logout();
-      //   var coords = getLocation();
-      //   // initMap();
-      //   // loadMap(coords);
-      // });
-
-// embed api key AIzaSyBWHuuF3VuRKhNtj8Uqe03TrDvSlOzYlus
-// maps api key AIzaSyDrmao1qmYbtSPldTh1JQFiH4SOwDROENM
     </script>
   </body>
 </html>

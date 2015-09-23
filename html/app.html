@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Food Truck App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <style type="text/css">
+      body {
+        padding-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="main-body-container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" id="main">
+          <p id="loading">Loading...</p>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+
+      function logout() {
+        sessionStorage.clear();
+        window.location = '/';
+      }
+
+      function initMap() {
+        $('#loading').remove();
+        $('#main').append('<div id="map" style="width: 100%; height: 400px;"></div>');
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: new google.maps.LatLng(47.623553, -122.335827),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+      }
+
+      $(document).ready(function() {
+        if (!sessionStorage.getItem('app_token')) logout();
+        initMap();
+      });
+
+      // function getLocation() {
+      //   if ('geolocation' in navigator) {
+      //     var coords = navigator.geolocation.getCurrentPosition(function(position) {
+      //       return [position.coords.latitude, position.coords.longitude];
+      //     });
+      //     return coords;
+      //   } else {
+      //     return false;
+      //   }
+      // }
+
+      // function loadMap(coords) {
+      //   var map = new google.maps.Map(document.getElementById('map'), {
+      //     zoom: 10,
+      //     center: new google.maps.LatLng(coords[0], coords[1]),
+      //     mapTypeId: google.maps.mapTypeId.ROADMAP
+      //   });
+      // }
+
+      // $(document).ready(function() {
+      //   if (!sessionStorage.getItem('app_token')) logout();
+      //   var coords = getLocation();
+      //   // initMap();
+      //   // loadMap(coords);
+      // });
+
+// embed api key AIzaSyBWHuuF3VuRKhNtj8Uqe03TrDvSlOzYlus
+// maps api key AIzaSyDrmao1qmYbtSPldTh1JQFiH4SOwDROENM
+    </script>
+  </body>
+</html>

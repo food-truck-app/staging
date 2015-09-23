@@ -3,6 +3,7 @@ var Truck = require(__dirname + '/../models/truck');
 var express = require('express');
 var jsonParser = require('body-parser').json();
 var handleError = require(__dirname + '/../lib/handle_error');
+var eatAuth = require(__dirname + '/../lib/eat_auth');
 
 var trucksRoute = module.exports = exports = express.Router();
 
@@ -37,7 +38,7 @@ trucksRoute.get('/trucks/:day/:lng/:lat', function(req, res) {
   });
 });
 
-trucksRoute.post('/trucks', jsonParser, function(req, res) {
+trucksRoute.post('/trucks', jsonParser, eatAuth, function(req, res) {
   var newTruck = new Truck(req.body);
   newTruck.save(function(err, data) {
     if (err) return handleError(err, res);
@@ -45,7 +46,7 @@ trucksRoute.post('/trucks', jsonParser, function(req, res) {
   });
 });
 
-trucksRoute.put('/trucks/:id', jsonParser, function(req, res) {
+trucksRoute.put('/trucks/:id', jsonParser, eatAuth, function(req, res) {
   var newTruckBody = req.body;
   Truck.update({_id: req.params.id}, newTruckBody, function(err, data) {
     if (err) return handleError(err, res);
@@ -53,7 +54,7 @@ trucksRoute.put('/trucks/:id', jsonParser, function(req, res) {
   });
 });
 
-trucksRoute.delete('/trucks/:id', jsonParser, function(req, res) {
+trucksRoute.delete('/trucks/:id', jsonParser, eatAuth, function(req, res) {
   Truck.remove({_id: req.params.id}, function(err) {
     if (err) return handleError(err, res);
     res.json({msg: 'success'});

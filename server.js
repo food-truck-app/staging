@@ -13,8 +13,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(passport.initialize()); //requires the passport package
 
-var userRouter = require(__dirname + '/routes/user');
-var authRouter = require(__dirname + '/routes/auth');
 var trucksRouter = require(__dirname + '/routes/trucks_routes');
 var usersRouter = require(__dirname + '/routes/users_routes');
 var webRouter = require(__dirname + '/routes/web_routes');
@@ -23,13 +21,6 @@ app.use('/api', usersRouter);
 app.use('/', webRouter);
 
 var router = express.Router();
-
-router.route('/users')
-	.get(authRouter.isAuthenticated, userRouter.getUsers)
-	.post(userRouter.postUsers);
-// 
-router.route('/authenticate')
-	.post(userRouter.authenticateUser);
 
 var trucksRouter = require(__dirname + '/routes/trucks_routes');
 app.use('/api', trucksRouter);

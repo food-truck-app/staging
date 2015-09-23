@@ -31,4 +31,3 @@ userSchema.methods.generateToken = function(callback) {
 };
 
 module.exports = mongoose.model('User', userSchema);
->>>>>>> 72cb56f4293c621bb3ffdd2c1ea743134f272e3c

@@ -18,12 +18,17 @@ ee.on('generateHash', function(newUser, req, res) {
   newUser.generateHash(req.body.password, function(err, hash) {
     if (err) return handleError(err, res);
     ee.emit('save', newUser, req, res);
+
   });
 });
 
 ee.on('save', function(newUser, req, res) {
   newUser.save(function(err, data) {
-    if (err) return handleError(err, data);
+    if (err) {
+      if (err.code === 11000){
+        return res.send({msg: 'username unavailable'});
+      }
+    }
     ee.emit('generateToken', newUser, req, res);
   });
 });

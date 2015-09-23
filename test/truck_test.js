@@ -49,6 +49,7 @@ describe('the truck resource', function() {
         token: token
       }).
       end(function(err, res) {
+        debugger;
         expect(err).to.eql(null);
         expect(res).to.have.status(200);
         done();

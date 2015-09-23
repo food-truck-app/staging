@@ -1,4 +1,4 @@
-{"food trucks:"[
+[
   {"name": "Djung On Wheels", 
     "cuisine": "Asian",
     "menu": [
@@ -7,22 +7,233 @@
       {"item": "Pad Thai"},
       {"item": "Pad Kee Mao"},
       {"item": "Pad See Ew"},
-    ]
+    ],
+    "locations": {
+      "monday": { 
+        "name": "Djung On Wheels",
+        "loc": [-122.335773, 47.623380]
+      },
+      "tuesday": { 
+        "name": "Djung On Wheels",
+        "loc": [-122.335772, 47.622867]
+      },
+      "wednesday": { 
+        "name": "Djung On Wheels",
+        "loc": [-122.337536, 47.623191]
+      },
+      "thursday": { 
+        "name": "Djung On Wheels",
+        "loc": [-122.338944, 47.623182]
+      },
+      "friday": { 
+        "name": "Djung On Wheels",
+        "loc": [-122.337154, 47.622365]
+      },
+      "saturday": { 
+        "name": "Djung On Wheels",
+        "loc": [-122.335521, 47.622009]
+      },
+      "sunday": { 
+        "name": "Djung On Wheels",
+        "loc": [-122.337536, 47.623191]
+      },                        
+    }
   },
+
   {"name": "Tacos El Tajin",
     "cuisine": "Hispanic",
     "menu": [
       {"item": "Regular Burrito"},
       {"item": "Super Burrito"}, 
       {"item": "Three Tacos"}
-    ]
+    ],
+    "locations": {
+      "monday": { 
+        "name": "Tacos El Tajin",
+        "loc": [-122.337536, 47.623191]
+      },
+      "tuesday": { 
+        "name": "Tacos El Tajin",
+        "loc": [-122.335350, 47.623182]
+      },
+      "wednesday": { 
+        "name": "Tacos El Tajin",
+        "loc": [-122.335792, 47.624033]
+      },
+      "thursday": { 
+        "name": "Tacos El Tajin",
+        "loc": [-122.338495, 47.622629]
+      },
+      "friday": { 
+        "name": "Tacos El Tajin",
+        "loc": [-122.335856, 47.622470]
+      },
+      "saturday": { 
+        "name": "Tacos El Tajin",
+        "loc": [-122.337536, 47.623191]
+      },
+      "sunday": { 
+        "name": "Tacos El Tajin",
+        "loc": [-122.335878, 47.624148]
+      },                        
+    }    
   },
+
   {"name": "Hungry Me",
     "cuisine": "Asian",
     "menu": [
       {"item": "Japanese Curry"},
       {"item": "Beef Stew"},
       {"item": "Panang Curry"}
-    ]
-  }
-]}
+    ],
+    "locations": {
+      "monday": { 
+        "name": "Hungry Me",
+        "loc": [-122.335878, 47.624148]
+      },
+      "tuesday": { 
+        "name": "Hungry Me",
+        "loc": [-122.338944, 47.623182]
+      },
+      "wednesday": { 
+        "name": "Hungry Me",
+        "loc": [-122.337536, 47.623191]
+      },
+      "thursday": { 
+        "name": "Hungry Me",
+        "loc": [-122.338388, 47.623792]
+      },
+      "friday": { 
+        "name": "Hungry Me",
+        "loc": [-122.338944, 47.623182]
+      },
+      "saturday": { 
+        "name": "Hungry Me",
+        "loc": [-122.338388, 47.623792]
+      },
+      "sunday": { 
+        "name": "Hungry Me",
+        "loc": [-122.339729, 47.624090]
+      },                        
+    }    
+  },
+
+  {"name": "Mama Meatball!",
+    "cuisine": "Italian",
+    "menu": [
+      {"item": "Spicy Sausage"},
+      {"item": "Meatball Sub"},
+      {"item": "Simple Spaghetti"},
+      {"item": "Veggie Lagasna"}
+    ],
+    "locations": {
+      "monday": { 
+        "name": "Mama Meatball!",
+        "loc": [-122.339729, 47.624090]
+      },
+      "tuesday": { 
+        "name": "Mama Meatball!",
+        "loc": [-122.338944, 47.623182]
+      },
+      "wednesday": { 
+        "name": "Mama Meatball!",
+        "loc": [-122.335485, 47.620904]
+      },
+      "thursday": { 
+        "name": "Mama Meatball!",
+        "loc": [-122.3232178, 47.621955]
+      },
+      "friday": { 
+        "name": "Mama Meatball!",
+        "loc": [-122.332125, 47.623119]
+      },
+      "saturday": { 
+        "name": "Mama Meatball!",
+        "loc": [-122.338944, 47.623182]
+      },
+      "sunday": { 
+        "name": "Mama Meatball!",
+        "loc": [-122.338944, 47.623182]
+      },                        
+    }    
+  },
+
+  {"name": "Tommy Bahama",
+    "cuisine": "Hawaiian",
+    "menu": [
+      {"item": "Pineapple Pizza"},
+      {"item": "Coconut Milk"},
+      {"item": "Mens causual clothing"},      
+      {"item": "Sunscreen"}
+    ],
+    "locations": {
+      "monday": { 
+        "name": "Tommy Bahama",
+        "loc": [-122.338944, 47.623182]
+      },
+      "tuesday": { 
+        "name": "Tommy Bahama",
+        "loc": [-122.335485, 47.620904]
+      },
+      "wednesday": { 
+        "name": "Tommy Bahama",
+        "loc": [-122.338388, 47.623792]
+      },
+      "thursday": { 
+        "name": "Tommy Bahama",
+        "loc": [-122.337536, 47.623191]
+      },
+      "friday": { 
+        "name": "Tommy Bahama",
+        "loc": [-122.338124, 47.620861]
+      },
+      "saturday": { 
+        "name": "Tommy Bahama",
+        "loc": [-122.335672, 47.624800]
+      },
+      "sunday": { 
+        "name": "Tommy Bahama",
+        "loc": [-122.339382, 47.623147]
+      },                        
+    }    
+  },
+
+  {"name": "Little Tony's Mafia Meals",
+    "cuisine": "Italian",
+    "menu": [
+      {"item": "Swimmin' with the Fishsticks"},
+      {"item": "Say hello to my little caesar salad"},
+      {"item": "Killer Pizza"}
+    ],
+    "locations": {
+      "monday": { 
+        "name": "Little Tony's Mafia Meals",
+        "loc": [-122.337010, 47.625422]
+      },
+      "tuesday": { 
+        "name": "Little Tony's Mafia Meals",
+        "loc": [-122.334892, 47.623115]
+      },
+      "wednesday": { 
+        "name": "Little Tony's Mafia Meals",
+        "loc": [-122.337010, 47.625422]
+      },
+      "thursday": { 
+        "name": "Little Tony's Mafia Meals",
+        "loc": [-122.334892, 47.623115]
+      },
+      "friday": { 
+        "name": "Little Tony's Mafia Meals",
+        "loc": [-122.338013, 47.620872]
+      },
+      "saturday": { 
+        "name": "Little Tony's Mafia Meals",
+        "loc": [-122.335688, 47.623254]
+      },
+      "sunday": { 
+        "name": "Little Tony's Mafia Meals",
+        "loc": [-122.337010, 47.625422]
+      },                        
+    }    
+  }      
+]

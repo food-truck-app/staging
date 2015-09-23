@@ -17,7 +17,7 @@ describe('httpBasic', function() {
 			}
 		};
 
-		httpBasic(req, {}, function() { 
+		httpBasic(req, {}, function() {
 			expect(typeof req.auth).to.eql('object');
 			expect(req.auth.username).to.eql('test');
 			expect(req.auth.password).to.eql('foobar123');

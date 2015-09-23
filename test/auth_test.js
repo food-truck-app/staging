@@ -72,6 +72,17 @@ describe('should be able to look up a user in database', function() {
 			});
 	});
 
+	it('should deny a username that is already in database', function(done) {
+		chai.request('localhost:3000/api')
+			.get('/signin')
+			.auth('test2', 'barfoo')
+			.end(function(err, res) {
+				expect(err).to.eql(null);
+				expect(res.body).to.eql({msg: 'could not authenticate'});
+				done();
+			})	
+	})
+
 	it('should be able to authenticate with eat auth', function(done) {
 		var token = this.token;
 		var req = {
@@ -86,7 +97,7 @@ describe('should be able to look up a user in database', function() {
 		});
 	});
 
-	//it('should deny a username that is already in database')
+
 });
 
 

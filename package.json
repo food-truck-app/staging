@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/Tallglass9000/food_truck_app#readme",
   "dependencies": {
-    "bcrypt": "^0.8.4",
-    "body-parser": "^1.13.0",
-    "eat": "^0.1.0",
     "express": "^4.13.3",
     "mongodb": "^2.0.43",
     "mongoose": "^4.1.7",
+    "eat": "^0.1.0",
+    "body-parser": "^1.13.0",
+    "bcrypt": "^0.8.4",
+    "passport": "^0.3.0",
+    "passport-http": "^0.3.0",
     "mongoose-simple-random": "^0.3.3"
   },
   "devDependencies": {

@@ -33,9 +33,9 @@
         <div class="col-md-4"></div>
         <div class="col-md-4 well">
           <h4>Sign up</h4>
-          <input type ="text" class="form-control" placeholder="Username" id="username">
+          <input type ="text" class="form-control" placeholder="Username" id="usernameSU">
           <br>
-          <input type="password" class="form-control" placeholder="Password" id="password">
+          <input type="password" class="form-control" placeholder="Password" id="passwordSU">
           <br>
           <button class ="btn-default center-block" id="signupBtn">Sign Up</button>
         </div> 
@@ -63,27 +63,7 @@
         }
       });
 
-    $('#signupBtn').click(function() {
-      if($('#username').length > 0 && $('#password').length > 0) {
-        $.ajax({
-          type: 'post',
-          url: '/api/signup',
-          dataType: 'json',
-          data: {
-            username: $('#username').val(),
-            password: $('#password').val()
-          },
-          success: function(data) {
-            authSuccess(data.token);
-          },
-          error: function() {
-            authError();
-          }
-        });
-      }
-    });  
-
-      function authError() {
+        function authError() {
         $('#main-body-container').append('\
           <div class="row"> \
             <div class="col-md-12 text-center"> \
@@ -96,7 +76,44 @@
       function authSuccess(token) {
         sessionStorage.setItem('app_token', token);
         window.location = '/app';
+      }  
+
+    $('#signupBtn').click(function() {
+      if($('#usernameSU').length > 0 && $('#passwordSU').length > 0) {
+        $.ajax({
+          type: 'post',
+          url: '/api/signup',
+          contentType: 'application/json',
+          dataType: 'json',
+          data: JSON.stringify({
+            username: $('#usernameSU').val(),
+            password: $('#passwordSU').val()
+          }),
+          success: function(data) {
+            authSuccess(data.token);
+          },
+          error: function() {
+            authError();
+          }
+        });
       }
+    });  
+
+      function newUserSuccess(token) {
+        //
+      }
+
+      // function newUserError() {
+      //    $('#signup').append('\
+      //     <div class="row"> \
+      //       <div class="col-md-12 text-center"> \
+      //         <p>Username already exists. Please retry.</p> \
+      //       </div> \
+      //     </div> \
+      //   ');
+      // }
+
+
 
     </script>
   </body>

@@ -2,40 +2,33 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var eat = require('eat');
 
-//Lambda example
 var userSchema = new mongoose.Schema({
-	username: {
-		type: String,
-		unique: true,
-		required: true
-	},
-	password: {
-		type: String,
-		required: true
-	},
+  username: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
 });
 
-userSchema.pre('save', function(next) {
-	var user = this;
+userSchema.methods.generateHash = function(password, callback) {
+  bcrypt.hash(password, 8, function(err, hash) {
+    if (err) return callback(err);
+    this.password = hash;
+    callback(null, hash);
+  }.bind(this));
+};
 
-	if(!user.isModified('password')) return next();
+userSchema.methods.compareHash = function(password, callback) {
+  bcrypt.compare(password, this.password, callback);
+};
 
-	bcrypt.genSalt(8, function(err, salt) {
-		if (err) return next(err);
-		
-		bcrypt.hash(user.password, salt, null, function(err, hash) {
-			if(err) return next(err);
-			user.password = hash;
-			next();
-		});
-	});
-});
-
-userSchema.methods.verifyPassword = function(password, callback) {
-	bcrypt.compare(password, this.password, function(err, isMatch) {
-		if(err) return callback(err);
-		callback(null, isMatch);
-	});
+userSchema.methods.generateToken = function(callback) {
+  eat.encode({id: this._id}, process.env.APP_SECRET, callback);
 };
 
 module.exports = mongoose.model('User', userSchema);
+>>>>>>> 72cb56f4293c621bb3ffdd2c1ea743134f272e3c

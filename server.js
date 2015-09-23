@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 
 mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/food_truck_app');
+process.env.APP_SECRET = process.env.APP_SECRET || 'forrealchangemechangeme';
 
 app.use(bodyParser.urlencoded({
 	extended: true
@@ -15,7 +16,11 @@ app.use(passport.initialize()); //requires the passport package
 var userRouter = require(__dirname + '/routes/user');
 var authRouter = require(__dirname + '/routes/auth');
 var trucksRouter = require(__dirname + '/routes/trucks_routes');
+var usersRouter = require(__dirname + '/routes/users_routes');
+var webRouter = require(__dirname + '/routes/web_routes');
 app.use('/api', trucksRouter);
+app.use('/api', usersRouter);
+app.use('/', webRouter);
 
 var router = express.Router();
 

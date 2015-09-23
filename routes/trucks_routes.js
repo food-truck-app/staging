@@ -14,22 +14,8 @@ trucksRoute.get('/trucks', function(req, res) {
 });
 
 trucksRoute.get('/trucks/:id', function(req, res) { // to get each truck data
-  Truck.findById({_id: req.params.id}, function(err, data) {
+  Truck.findById({_id: req.params.id}, function(err, truck) {
     if (err) return handleError(err, res);
-    res.json({truck});
+    res.json(truck);
   });
 });
-
-// trucksRoute.delete('/trucks/:id', jsonParser, function(req, res) {
-//   Truck.remove({_id: req.params.id}, function(err) {
-//     if (err) return handleError(err, res);
-//     res.json({msg: 'success'});
-//   });
-// });
-// trucksRoute.post('/trucks', jsonParser, function(req, res) {
-//   var newTruck = new Truck(req.body);
-//   newTruck.save(function(err, data) {
-//     if (err) return handleError(err, res);
-//     res.json(data);
-//   });
-// });

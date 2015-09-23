@@ -35,7 +35,7 @@ describe('auth', function() {
 	it('should be able to create a new user', function(done) {
 		chai.request('localhost:3000/api')
 			.post('/signup')
-			.send({username: 'test2', password: 'foobar456'})
+			.send({username: 'test1', password: 'foobar456'})
 			.end(function(err, res) {
 				expect(err).to.eql(null);
 				expect(res.body.token).to.have.length.above(0); //still undefined
@@ -48,7 +48,7 @@ describe('should be able to look up a user in database', function() {
 	before(function(done) {
 		var user = new User();
 		user.username = 'test2';
-		user.generateHash('foobar456', function(err, res) {
+		user.generateHash('foobar789', function(err, res) {
 			if(err) throw err;
 			user.save(function(err, data) {
 				if(err) throw err;
@@ -85,6 +85,8 @@ describe('should be able to look up a user in database', function() {
 			done();
 		});
 	});
+
+	//it('should deny a username that is already in database')
 });
 
 

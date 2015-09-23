@@ -1,0 +1,28 @@
+{"food trucks:"[
+  {"name": "Djung On Wheels", 
+    "cuisine": "Asian",
+    "menu": [
+      {"item": "Orange Chicken"},
+      {"item": "Red Curry Chicken"},
+      {"item": "Pad Thai"},
+      {"item": "Pad Kee Mao"},
+      {"item": "Pad See Ew"},
+    ]
+  },
+  {"name": "Tacos El Tajin",
+    "cuisine": "Hispanic",
+    "menu": [
+      {"item": "Regular Burrito"},
+      {"item": "Super Burrito"}, 
+      {"item": "Three Tacos"}
+    ]
+  },
+  {"name": "Hungry Me",
+    "cuisine": "Asian",
+    "menu": [
+      {"item": "Japanese Curry"},
+      {"item": "Beef Stew"},
+      {"item": "Panang Curry"}
+    ]
+  }
+]}

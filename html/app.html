@@ -30,6 +30,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <li><a id="random" href="#">Random</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cuisine<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -56,7 +57,14 @@
     </div>
     <script type="text/javascript">
 
-    var map, markerCollection = [];
+      var map, markerCollection = [];
+
+      function clearMarkers() {
+        for (var i = 0; i < markerCollection.length; i++) {
+          markerCollection[i].setMap(null);
+        }
+        markerCollection.length = 0;
+      }
 
       function logout() {
         sessionStorage.clear();
@@ -66,7 +74,7 @@
       function initMap() {
         $('#loading').remove();
         $('#main').append('<div id="map" style="width: 100%; height: 400px;"></div>');
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
           center: new google.maps.LatLng(47.623553, -122.335827),
           mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -135,6 +143,37 @@
         if (!sessionStorage.getItem('app_token')) logout();
         initMap();
       });
+
+      $('#random').click(function() {
+        getRandom();
+      });
+
+      function getRandom() {
+        clearMarkers();
+        $.ajax({
+          type: 'get',
+          url: '/api/trucks/random/random',
+          dataType: 'json',
+          success: function(data) {
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(data.locations.monday.loc[1], data.locations.monday.loc[0]),
+              map: map
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                infowindow.setContent(data.truckname);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+            markerCollection.push(marker);
+          },
+          error: function() {
+            console.log('error!');
+          }
+        });
+      }
 
     </script>
   </body>

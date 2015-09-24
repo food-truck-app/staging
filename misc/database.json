@@ -1,42 +1,42 @@
 [
-  {"name": "Djung On Wheels", 
+  {"name": "Djung On Wheels",
     "cuisine": "Asian",
     "menu": [
       {"item": "Orange Chicken"},
       {"item": "Red Curry Chicken"},
       {"item": "Pad Thai"},
       {"item": "Pad Kee Mao"},
-      {"item": "Pad See Ew"},
+      {"item": "Pad See Ew"}
     ],
     "locations": {
-      "monday": { 
+      "monday": {
         "name": "Djung On Wheels",
         "loc": [-122.335773, 47.623380]
       },
-      "tuesday": { 
+      "tuesday": {
         "name": "Djung On Wheels",
         "loc": [-122.335772, 47.622867]
       },
-      "wednesday": { 
+      "wednesday": {
         "name": "Djung On Wheels",
         "loc": [-122.337536, 47.623191]
       },
-      "thursday": { 
+      "thursday": {
         "name": "Djung On Wheels",
         "loc": [-122.338944, 47.623182]
       },
-      "friday": { 
+      "friday": {
         "name": "Djung On Wheels",
         "loc": [-122.337154, 47.622365]
       },
-      "saturday": { 
+      "saturday": {
         "name": "Djung On Wheels",
         "loc": [-122.335521, 47.622009]
       },
-      "sunday": { 
+      "sunday": {
         "name": "Djung On Wheels",
         "loc": [-122.337536, 47.623191]
-      },                        
+      }
     }
   },
 
@@ -44,39 +44,39 @@
     "cuisine": "Hispanic",
     "menu": [
       {"item": "Regular Burrito"},
-      {"item": "Super Burrito"}, 
+      {"item": "Super Burrito"},
       {"item": "Three Tacos"}
     ],
     "locations": {
-      "monday": { 
+      "monday": {
         "name": "Tacos El Tajin",
         "loc": [-122.337536, 47.623191]
       },
-      "tuesday": { 
+      "tuesday": {
         "name": "Tacos El Tajin",
         "loc": [-122.335350, 47.623182]
       },
-      "wednesday": { 
+      "wednesday": {
         "name": "Tacos El Tajin",
         "loc": [-122.335792, 47.624033]
       },
-      "thursday": { 
+      "thursday": {
         "name": "Tacos El Tajin",
         "loc": [-122.338495, 47.622629]
       },
-      "friday": { 
+      "friday": {
         "name": "Tacos El Tajin",
         "loc": [-122.335856, 47.622470]
       },
-      "saturday": { 
+      "saturday": {
         "name": "Tacos El Tajin",
         "loc": [-122.337536, 47.623191]
       },
-      "sunday": { 
+      "sunday": {
         "name": "Tacos El Tajin",
         "loc": [-122.335878, 47.624148]
-      },                        
-    }    
+      }
+    }
   },
 
   {"name": "Hungry Me",
@@ -87,35 +87,35 @@
       {"item": "Panang Curry"}
     ],
     "locations": {
-      "monday": { 
+      "monday": {
         "name": "Hungry Me",
         "loc": [-122.335878, 47.624148]
       },
-      "tuesday": { 
+      "tuesday": {
         "name": "Hungry Me",
         "loc": [-122.338944, 47.623182]
       },
-      "wednesday": { 
+      "wednesday": {
         "name": "Hungry Me",
         "loc": [-122.337536, 47.623191]
       },
-      "thursday": { 
+      "thursday": {
         "name": "Hungry Me",
         "loc": [-122.338388, 47.623792]
       },
-      "friday": { 
+      "friday": {
         "name": "Hungry Me",
         "loc": [-122.338944, 47.623182]
       },
-      "saturday": { 
+      "saturday": {
         "name": "Hungry Me",
         "loc": [-122.338388, 47.623792]
       },
-      "sunday": { 
+      "sunday": {
         "name": "Hungry Me",
         "loc": [-122.339729, 47.624090]
-      },                        
-    }    
+      }
+    }
   },
 
   {"name": "Mama Meatball!",
@@ -127,35 +127,35 @@
       {"item": "Veggie Lagasna"}
     ],
     "locations": {
-      "monday": { 
+      "monday": {
         "name": "Mama Meatball!",
         "loc": [-122.339729, 47.624090]
       },
-      "tuesday": { 
+      "tuesday": {
         "name": "Mama Meatball!",
         "loc": [-122.338944, 47.623182]
       },
-      "wednesday": { 
+      "wednesday": {
         "name": "Mama Meatball!",
         "loc": [-122.335485, 47.620904]
       },
-      "thursday": { 
+      "thursday": {
         "name": "Mama Meatball!",
         "loc": [-122.3232178, 47.621955]
       },
-      "friday": { 
+      "friday": {
         "name": "Mama Meatball!",
         "loc": [-122.332125, 47.623119]
       },
-      "saturday": { 
+      "saturday": {
         "name": "Mama Meatball!",
         "loc": [-122.338944, 47.623182]
       },
-      "sunday": { 
+      "sunday": {
         "name": "Mama Meatball!",
         "loc": [-122.338944, 47.623182]
-      },                        
-    }    
+      }
+    }
   },
 
   {"name": "Tommy Bahama",
@@ -163,39 +163,39 @@
     "menu": [
       {"item": "Pineapple Pizza"},
       {"item": "Coconut Milk"},
-      {"item": "Mens causual clothing"},      
+      {"item": "Mens causual clothing"},
       {"item": "Sunscreen"}
     ],
     "locations": {
-      "monday": { 
+      "monday": {
         "name": "Tommy Bahama",
         "loc": [-122.338944, 47.623182]
       },
-      "tuesday": { 
+      "tuesday": {
         "name": "Tommy Bahama",
         "loc": [-122.335485, 47.620904]
       },
-      "wednesday": { 
+      "wednesday": {
         "name": "Tommy Bahama",
         "loc": [-122.338388, 47.623792]
       },
-      "thursday": { 
+      "thursday": {
         "name": "Tommy Bahama",
         "loc": [-122.337536, 47.623191]
       },
-      "friday": { 
+      "friday": {
         "name": "Tommy Bahama",
         "loc": [-122.338124, 47.620861]
       },
-      "saturday": { 
+      "saturday": {
         "name": "Tommy Bahama",
         "loc": [-122.335672, 47.624800]
       },
-      "sunday": { 
+      "sunday": {
         "name": "Tommy Bahama",
         "loc": [-122.339382, 47.623147]
-      },                        
-    }    
+      }
+    }
   },
 
   {"name": "Little Tony's Mafia Meals",
@@ -206,34 +206,34 @@
       {"item": "Killer Pizza"}
     ],
     "locations": {
-      "monday": { 
+      "monday": {
         "name": "Little Tony's Mafia Meals",
         "loc": [-122.337010, 47.625422]
       },
-      "tuesday": { 
+      "tuesday": {
         "name": "Little Tony's Mafia Meals",
         "loc": [-122.334892, 47.623115]
       },
-      "wednesday": { 
+      "wednesday": {
         "name": "Little Tony's Mafia Meals",
         "loc": [-122.337010, 47.625422]
       },
-      "thursday": { 
+      "thursday": {
         "name": "Little Tony's Mafia Meals",
         "loc": [-122.334892, 47.623115]
       },
-      "friday": { 
+      "friday": {
         "name": "Little Tony's Mafia Meals",
         "loc": [-122.338013, 47.620872]
       },
-      "saturday": { 
+      "saturday": {
         "name": "Little Tony's Mafia Meals",
         "loc": [-122.335688, 47.623254]
       },
-      "sunday": { 
+      "sunday": {
         "name": "Little Tony's Mafia Meals",
         "loc": [-122.337010, 47.625422]
-      },                        
-    }    
-  }      
+      }
+    }
+  }
 ]

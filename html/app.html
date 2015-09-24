@@ -48,7 +48,6 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Truck<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Awesome Food Truck</a></li>
-                <li><a href="#">Another Food Truck</a></li>
                 <li><a href="#">Chinese Food Truck!</a></li>
                 <li><a href="#">Djung on Wheels</a></li>
                 <li><a href="#">Hungry Me</a></li>
@@ -179,6 +178,17 @@
       $('#random').click(function() {
         getRandom();
       });
+
+      function pickCuisine() {
+        $.ajax({
+          type: 'get',
+          url: '/api/trucks/cuisine/cuisine',
+          dataType: 'json',
+          success: function(data) {
+            // get trucks with cuisine that match 
+          }
+        })
+      }
 
       function getRandom() {
         clearMarkers();

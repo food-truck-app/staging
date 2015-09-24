@@ -38,6 +38,16 @@ trucksRoute.get('/trucks/:day/:lng/:lat', function(req, res) {
   });
 });
 
+trucksRoute.get('/trucks/random/random', function(req, res) {
+  Truck.count().exec(function(err, count) {
+    var random = Math.floor(Math.random() * count);
+    Truck.findOne().skip(random).exec(function(err, truck) {
+      if (err) return handleError(err, res);
+      res.json(truck);
+    });
+  });
+});
+
 trucksRoute.post('/trucks', jsonParser, eatAuth, function(req, res) {
   var newTruck = new Truck(req.body);
   newTruck.save(function(err, data) {

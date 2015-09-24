@@ -2,7 +2,7 @@ var chai = require('chai');
 var chaiHTTP = require('chai-http');
 chai.use(chaiHTTP);
 var expect = chai.expect;
-process.env.MONGO_URL = 'mongodb://localhost/food_truck_app_test';
+process.env.MONGO_URL = 'mongodb://localhost/food_truck_app_auth_test';
 require(__dirname + '/../server');
 var mongoose = require('mongoose');
 var User = require(__dirname + '/../models/user');
@@ -66,6 +66,7 @@ describe('should be able to look up a user in database', function() {
 			.get('/signin')
 			.auth('test2', 'foobar789')
 			.end(function(err, res) {
+				debugger;
 				expect(err).to.eql(null);
 				expect(res.body.token).to.have.length.above(0); //cant find length of undefined
 				done();

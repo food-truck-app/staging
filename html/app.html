@@ -41,7 +41,35 @@
                 <li><a href="#">Other</a></li>
               </ul>
             </li>
+
             <li><a id="logout" href="#">Logout</a></li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Truck<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Awesome Food Truck</a></li>
+                <li><a href="#">Another Food Truck</a></li>
+                <li><a href="#">Chinese Food Truck!</a></li>
+                <li><a href="#">Djung on Wheels</a></li>
+                <li><a href="#">Hungry Me</a></li>
+                <li><a href="#">Little Tony's Mafia Meals</a></li>
+                <li><a href="#">Mama Meatball!</a></li>
+                <li><a href="#">Tacos El Tajin</a></li>
+                <li><a href="#">Tommy Bahama</a></li>
+              </ul>
+            </li>
+            <li class="dropdown" id="dropdown3">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Day of the Week<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Monday</a></li>
+                <li><a href="#">Tuesday</a></li>
+                <li><a href="#">Wednesday</a></li>
+                <li><a href="#">Thursday</a></li>
+                <li><a href="#">Friday</a></li>
+                <li><a href="#">Saturday</a></li>
+                <li><a href="#">Sunday</a></li>
+              </ul>
+            </li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -79,6 +107,38 @@
           center: new google.maps.LatLng(47.623553, -122.335827),
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
+        
+        $.ajax({
+          url: "/api/trucks",
+          dataType: "json"
+          }).success(function (data) {
+          var locations = [];
+          var date = new Date();
+          var dateDay = date.getDay();
+          var dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          var day = dayArray[dateDay].toLowerCase();
+
+          for (var i = 0; i < data.length; i++) {
+            locations.push([data[i].truckname || data[i].locations[day].name, data[i].locations[day].loc[1], data[i].locations[day].loc[0], i]); 
+          }
+
+          var infowindow = new google.maps.InfoWindow();
+          var marker, i;
+          for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+              map: map, 
+              title: locations[i][0]
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                console.log(marker);
+                infowindow.setContent(marker.title);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+          }
+        });
 
         $.ajax({
           type: 'get',
@@ -105,34 +165,6 @@
             console.log('error!');
           }
         });
-
-        // var locations = [
-        //   ['Explosiv', 47.623380, -122.335773, 7],
-        //   ["Sam Choy\'s Poke", 47.623229, -122.337320, 6],
-        //   ['Pie Pie', 47.623380, -122.335853, 5],
-        //   ['Hungry Me', 47.623385, -122.335778, 4],
-        //   ['Buddah Bruddah', 47.623234, -122.337325, 3],
-        //   ['Tacos El Tajin', 47.623390, -122.335783, 2],
-        //   ['Djung On Wheels', 47.623393, -122.335858, 1]
-        // ];
-
-        // var infowindow = new google.maps.InfoWindow();
-
-        // var marker, i;
-
-        // for (i = 0; i < locations.length; i++) {
-        //   marker = new google.maps.Marker({
-        //     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        //     map: map
-        //   });
-
-        //   google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        //     return function() {
-        //       infowindow.setContent(locations[i][0]);
-        //       infowindow.open(map, marker);
-        //     }
-        //   })(marker, i));
-        // }
       }
 
       $('#logout').click(function() {
@@ -174,7 +206,6 @@
           }
         });
       }
-
     </script>
   </body>
 </html>

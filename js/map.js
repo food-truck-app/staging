@@ -1,34 +1,30 @@
-$(document).ready(function() {
-  if (!sessionStorage.getItem('app_token')) logout();
-  initMap();
+var map, markerCollection = [];
 
-  var map, markerCollection = [];
-
-  function clearMarkers() {
-    for (var i = 0; i < markerCollection.length; i++) {
-      markerCollection[i].setMap(null);
-    }
-    markerCollection.length = 0;
+function clearMarkers() {
+  for (var i = 0; i < markerCollection.length; i++) {
+    markerCollection[i].setMap(null);
   }
+  markerCollection.length = 0;
+}
 
-  function initMap() {
-    $('#loading').remove();
-    $('#main').append('<div id="map" style="width: 100%; height: 400px;"></div>');
-    map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: new google.maps.LatLng(47.623553, -122.335827),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    
-    $.ajax({
-      url: "/api/trucks",
-      dataType: "json"
-      }).success(function (data) {
-      var locations = [];
-      var date = new Date();
-      var dateDay = date.getDay();
-      var dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      var day = dayArray[dateDay].toLowerCase();
+function initMap() {
+  $('#loading').remove();
+  $('#main').append('<div id="map" style="width: 100%; height: 400px;"></div>');
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: new google.maps.LatLng(47.623553, -122.335827),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  $.ajax({
+    url: "/api/trucks",
+    dataType: "json"
+    }).success(function (data) {
+    var locations = [];
+    var date = new Date();
+    var dateDay = date.getDay();
+    var dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var day = dayArray[dateDay].toLowerCase();
 
       for (var i = 0; i < data.length; i++) {
         var truck = data[i];
@@ -44,9 +40,8 @@ $(document).ready(function() {
           );
       }
 
-      var infowindow = new google.maps.InfoWindow();
-      var marker, i;
-
+    var infowindow = new google.maps.InfoWindow();
+    var marker, i;
       for (i = 0; i < locations.length; i++) {
         var location = locations[i];
         console.log(location);
@@ -114,6 +109,21 @@ $(document).ready(function() {
       }
     });
   }
+
+
+function appendMenu(truckName, menuList) {
+  $('#menuRow').remove();
+  $("#main-body-container").append('<div class="row" id="menuRow" style="padding-top: 30px;"> \
+              <div class="col-md-2"></div> \
+              <div class="col-md-8"><h4>' + truckName + '</h4><br><p><b>Menu</b>: ' + menuList + '</p></div> \
+              <div class="col-md-2"></div>\
+            </div>'
+  );
+}
+
+$(document).ready(function() {
+  if (!sessionStorage.getItem('app_token')) logout();
+  initMap();
 
   $('#random').click(function() {
     getRandom();

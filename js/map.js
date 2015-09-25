@@ -89,6 +89,40 @@ function getRandom() {
   });
 }
 
+function selectTruck() {
+  clearMarkers();
+  $('#menuRow').remove(); //needed?
+  $.ajax({
+    type: 'get',
+    url: 'api/trucks/:id',
+    dataType: 'json',
+    success: function(data) {
+      var infowindow = new google.maps.InfoWindow();
+      var marker, i;
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(data.locations.monday.loc[1], data.locations.monday.loc[0]),
+        map: map
+      });
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(data.locations.monday.name);
+          infowindow.open(map, marker);
+          var truckName = data.locations.monday.name;
+          var menuItems = data.menu.map(function(item) {
+              return item.item;
+          });
+          var menuList = menuItems.join(', ');
+          appendMenu(truckName, menuList);
+        }
+      })(marker, i));
+      markerCollection.push(marker);  
+    },
+    error: function() {
+      console.log('failed to select truck');
+    }
+  });
+}
+
 function appendMenu(truckName, menuList) {
   $('#menuRow').remove();
   $("#main-body-container").append('<div class="row" id="menuRow" style="padding-top: 30px;"> \
@@ -104,6 +138,8 @@ $(document).ready(function() {
   initMap();
 
   $('#random').click(function() {
-    getRandom();
+    getRandom('#truck-dropdown');
   });
+
+  $('.truck-dropdown')
 });

@@ -32,6 +32,17 @@ $(document).ready(function() {
 
       for (var i = 0; i < data.length; i++) {
         locations.push([data[i].truckname || data[i].locations[day].name, data[i].locations[day].loc[1], data[i].locations[day].loc[0], i]); 
+        var truck = data[i];
+//        locations.push([truck.truckname || truck.locations[day].name, truck.locations[day].loc[1], truck.locations[day].loc[0], i]); 
+          locations.push
+          (
+              {
+                  name: truck.truckname || truck.locations[day].name,
+                  lat: truck.locations[day].loc[1],
+                  lon: truck.locations[day].loc[0],
+                  cuisine: truck.cuisine
+              }
+          );
       }
 
       var infowindow = new google.maps.InfoWindow();
@@ -42,6 +53,18 @@ $(document).ready(function() {
           map: map, 
           title: locations[i][0]
         });
+
+
+      for (i = 0; i < locations.length; i++) {
+        var location = locations[i];
+        console.log(location);
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(location.lat, location.lon),
+          map: map, 
+          title: location.name
+        });
+        marker.cuisine = location.cuisine;
+        console.log(marker.cuisine);
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
             console.log(marker);
@@ -54,7 +77,26 @@ $(document).ready(function() {
     });
   }
 
-  function getRandom() {
+  function onChangeCuisine (cuisineType) {
+    for (var i = 0; i < markerCollection.length; i++) {
+      var mapMarker = markerCollection[i];
+      if (mapMarker.cuisine === cuisineType) {
+        mapMarker.setVisible(true);
+      }
+      else {
+        mapMarker.setVisible(false);
+      };
+    }
+  }
+
+  $('.cuisine-dropdown')
+    .on('click', 'a', function (event) {
+        var target = $(event.target);
+        var cuisineType = target.text();
+        onChangeCuisine(cuisineType);
+    });
+
+  function getRandom () {
     clearMarkers();
     $.ajax({
       type: 'get',

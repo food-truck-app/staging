@@ -19,7 +19,7 @@ $(document).ready(function() {
       center: new google.maps.LatLng(47.623553, -122.335827),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    
+
     $.ajax({
       url: "/api/trucks",
       dataType: "json"
@@ -32,7 +32,7 @@ $(document).ready(function() {
 
       for (var i = 0; i < data.length; i++) {
         var truck = data[i];
-//        locations.push([truck.truckname || truck.locations[day].name, truck.locations[day].loc[1], truck.locations[day].loc[0], i]); 
+//        locations.push([truck.truckname || truck.locations[day].name, truck.locations[day].loc[1], truck.locations[day].loc[0], i]);
           locations.push
           (
               {
@@ -52,7 +52,7 @@ $(document).ready(function() {
         console.log(location);
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(location.lat, location.lon),
-          map: map, 
+          map: map,
           title: location.name
         });
         marker.cuisine = location.cuisine;
@@ -70,14 +70,74 @@ $(document).ready(function() {
   }
 
   function onChangeCuisine (cuisineType) {
-    for (var i = 0; i < markerCollection.length; i++) {
-      var mapMarker = markerCollection[i];
-      if (mapMarker.cuisine === cuisineType) {
-        mapMarker.setVisible(true);
+    if (markerCollection.length === 1) {
+      clearMarkers();
+      $.ajax({
+        url: "/api/trucks",
+        dataType: "json"
+        }).success(function (data) {
+        var locations = [];
+        var date = new Date();
+        var dateDay = date.getDay();
+        var dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var day = dayArray[dateDay].toLowerCase();
+
+        for (var i = 0; i < data.length; i++) {
+          var truck = data[i];
+  //        locations.push([truck.truckname || truck.locations[day].name, truck.locations[day].loc[1], truck.locations[day].loc[0], i]);
+            locations.push
+            (
+                {
+                    name: truck.truckname || truck.locations[day].name,
+                    lat: truck.locations[day].loc[1],
+                    lon: truck.locations[day].loc[0],
+                    cuisine: truck.cuisine
+                }
+            );
+        }
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+          var location = locations[i];
+          console.log(location);
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(location.lat, location.lon),
+            map: map,
+            title: location.name
+          });
+          marker.cuisine = location.cuisine;
+          console.log(marker.cuisine);
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              console.log(marker);
+              infowindow.setContent(marker.title);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+          markerCollection.push(marker);
+        }
+        for (var i = 0; i < markerCollection.length; i++) {
+          var mapMarker = markerCollection[i];
+          if (mapMarker.cuisine === cuisineType) {
+            mapMarker.setVisible(true);
+          }
+          else {
+            mapMarker.setVisible(false);
+          };
+        }
+      });
+    } else {
+      for (var i = 0; i < markerCollection.length; i++) {
+        var mapMarker = markerCollection[i];
+        if (mapMarker.cuisine === cuisineType) {
+          mapMarker.setVisible(true);
+        }
+        else {
+          mapMarker.setVisible(false);
+        };
       }
-      else {
-        mapMarker.setVisible(false);
-      };
     }
   }
 

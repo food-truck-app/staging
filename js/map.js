@@ -62,6 +62,12 @@ $(document).ready(function() {
             console.log(marker);
             infowindow.setContent(marker.title);
             infowindow.open(map, marker);
+            var truckName = data[i].locations.monday.name;
+            var menuItems = data[i].menu.map(function(item) {
+              return item.item;
+            });
+            var menuList = menuItems.join(', ');
+            appendMenu(truckName, menuList);
           }
         })(marker, i));
         markerCollection.push(marker);
@@ -72,6 +78,7 @@ $(document).ready(function() {
   function onChangeCuisine (cuisineType) {
     if (markerCollection.length === 1) {
       clearMarkers();
+      $('#menuRow').remove();
       $.ajax({
         url: "/api/trucks",
         dataType: "json"
@@ -114,6 +121,12 @@ $(document).ready(function() {
               console.log(marker);
               infowindow.setContent(marker.title);
               infowindow.open(map, marker);
+              var truckName = data[i].locations.monday.name;
+              var menuItems = data[i].menu.map(function(item) {
+                return item.item;
+              });
+              var menuList = menuItems.join(', ');
+              appendMenu(truckName, menuList);
             }
           })(marker, i));
           markerCollection.push(marker);
@@ -130,6 +143,7 @@ $(document).ready(function() {
       });
     } else {
       for (var i = 0; i < markerCollection.length; i++) {
+        $('#menuRow').remove();
         var mapMarker = markerCollection[i];
         if (mapMarker.cuisine === cuisineType) {
           mapMarker.setVisible(true);

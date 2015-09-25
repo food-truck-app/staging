@@ -7,6 +7,9 @@
     "test": "mocha",
     "start": "node server.js"
   },
+"engines": {
+   "node": ">=0.10"
+ },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tallglass9000/food_truck_app.git"

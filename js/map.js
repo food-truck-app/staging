@@ -39,7 +39,8 @@ $(document).ready(function() {
                   name: truck.truckname || truck.locations[day].name,
                   lat: truck.locations[day].loc[1],
                   lon: truck.locations[day].loc[0],
-                  cuisine: truck.cuisine
+                  cuisine: truck.cuisine,
+                  menu: truck.menu
               }
           );
       }
@@ -62,6 +63,13 @@ $(document).ready(function() {
             console.log(marker);
             infowindow.setContent(marker.title);
             infowindow.open(map, marker);
+            var truckName = location.name;
+            console.log(truckName);
+            var menuItems = location.menu.map(function(item) {
+              return item.item;
+            });
+            var menuList = menuItems.join(', ');
+            appendMenu(truckName, menuList);
           }
         })(marker, i));
         markerCollection.push(marker);

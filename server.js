@@ -3,7 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-mongoose.connect(process.env.MONGO_URL || 'mongodb://<dbuser>:<dbpassword>@ds051883.mongolab.com:51883/heroku_4tdjdwk7');
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/food_truck_app');
 process.env.APP_SECRET = process.env.APP_SECRET || 'forrealchangemechangeme';
 
 var trucksRouter = require(__dirname + '/routes/trucks_routes');

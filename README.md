@@ -1,12 +1,12 @@
 FOOD TRUCK APP
 ===================
+[![Build Status](https://travis-ci.org/food-truck-app/staging.svg?branch=master)](https://travis-ci.org/food-truck-app/staging)
 
-Simple application that will store name, location, and menu data on food trucks.
+A South Lake Union food truck finder application that allows the user to login, and visualize food trucks on an interactive map. 
 
-Additionally, will have features to select food truck randomly or based on desired cuisine.
+Additional functionality includes a randomizer button to select a random food truck and show positioning on a map.
 
+The user is also able to select a specific date of the week that will load locations of food trucks on that day.
 
-Vocab list
-==========
+Finally, the user is able to select a specific type of cuisine that will populate the map with food trucks that serve that cuisine.
 
-(fill in parameter names and info here)

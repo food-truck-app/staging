@@ -12,7 +12,7 @@ $(document).ready(function () {
       for (var i = 0; i < cuisines.length; i++) {
         if (sortedCuisines[i + 1] != sortedCuisines[i]) {
           results.push(sortedCuisines[i]);
-          ul1.append("<li id='" + i + "'><a href='#'>" + sortedCuisines[i] + "</a></li>");
+          ul1.append("<li id='cuisine" + i + "'><a href='#'>" + sortedCuisines[i] + "</a></li>");
         }
       }
     };
@@ -25,7 +25,7 @@ $(document).ready(function () {
         var day = dayArray[dateDay].toLowerCase();
 
         var truckName = val.truckname || val.locations[day].name;
-        ul2.append("<li id='" + key + "'><a href='#'>" + truckName + "</a></li>");
+        ul2.append("<li id='truck" + key + "'><a href='#'>" + truckName + "</a></li>");
       });
     };
     cuisineList(data);

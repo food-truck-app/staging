@@ -47,23 +47,23 @@
     <script type="text/javascript">
 
       $('#login').click(function() {
-        if ($('#username').length > 0 && $('#password').length > 0) {
-          $.ajax({
-            type: 'get',
-            url: '/api/signin',
-            dataType: 'json',
-            headers: {
-              'Authorization': 'Basic ' + btoa($('#username').val() + ':' + $('#password').val())
-            },
-            success: function(data) {
-              authSuccess(data.token);
-            },
-            error: function() {
-              authError();
-            }
-          });
-        }
-      });
+       if ($('#username').val().length > 0 && $('#password').val().length > 0) {
+         $.ajax({
+           type: 'get',
+           url: '/api/signin',
+           dataType: 'json',
+           headers: {
+             'Authorization': 'Basic ' + btoa($('#username').val() + ':' + $('#password').val())
+           },
+           success: function(data) {
+             authSuccess(data.token);
+           },
+           error: function() {
+             authError();
+           }
+         });
+       }
+     });
 
         function authError() {
         $('#main-body-container').append('\
@@ -81,26 +81,26 @@
       }  
 
     $('#signupBtn').click(function() {
-      if($('#usernameSU').length > 0 && $('#passwordSU').length > 0) {
-        $.ajax({
-          type: 'post',
-          url: '/api/signup',
-          contentType: 'application/json',
-          dataType: 'json',
-          data: JSON.stringify({
-            username: $('#usernameSU').val(),
-            password: $('#passwordSU').val()
-          }),
-          success: function(data) {
-            if(!data.token) {return authError();}
-            authSuccess(data.token);
-          },
-          error: function() {
-            authError();
-          }
-        });
-      }
-    });  
+     if($('#usernameSU').val().length > 0 && $('#passwordSU').val().length > 0) {
+       $.ajax({
+         type: 'post',
+         url: '/api/signup',
+         contentType: 'application/json',
+         dataType: 'json',
+         data: JSON.stringify({
+           username: $('#usernameSU').val(),
+           password: $('#passwordSU').val()
+         }),
+         success: function(data) {
+           if(!data.token) {return authError();}
+           authSuccess(data.token);
+         },
+         error: function() {
+           authError();
+         }
+       });
+     }
+   });
 
     </script>
   </body>

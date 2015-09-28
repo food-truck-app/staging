@@ -1,0 +1,17 @@
+Basic app
+=========
+	name, location, description, menu of food truck
+	user login - store favorite truck (IDs) x
+	location per day as mongo query x
+	menu items as array of objects (first)
+	authorization
+
+Additional ideas
+================
+	truck randomizer
+	
+	map feature -- mongo query would be easier of options x
+
+	full text search description
+
+	truck ids to include review as an object?

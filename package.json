@@ -1,0 +1,36 @@
+{
+  "name": "food_truck_app",
+  "version": "0.1.0",
+  "description": "food truck names locations menus and possibly more",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+"engines": {
+   "node": "=0.10"
+ },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tallglass9000/food_truck_app.git"
+  },
+  "author": "Clare, Emmett, Monica",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tallglass9000/food_truck_app/issues"
+  },
+  "homepage": "https://github.com/Tallglass9000/food_truck_app#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongodb": "^2.0.43",
+    "mongoose": "^4.1.7",
+    "eat": "^0.1.0",
+    "body-parser": "^1.13.0",
+    "bcrypt": "^0.8.4"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "chai-http": "^1.0.0",
+    "mocha": "^2.3.3"
+  }
+}

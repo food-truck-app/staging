@@ -293,13 +293,6 @@ $(document).ready(function() {
       onChangeCuisine(cuisineType);
     });
 
-  $('.day-dropdown')
-    .on('click', 'a', function (event) {
-      var target = $(event.target);
-      var dayOfWeek = target.text().toLowerCase();
-      onChangeDay(dayOfWeek);
-    });
-
   $('.truck-dropdown')
     .on('click', 'a', function (event) {
       var target = $(event.target);

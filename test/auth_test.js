@@ -37,6 +37,7 @@ describe('auth', function() {
 			.post('/signup')
 			.send({username: 'test1', password: 'foobar456'})
 			.end(function(err, res) {
+				console.log('res', res);
 				expect(err).to.eql(null);
 				expect(res.body.token).to.have.length.above(0); //still undefined
 				done();
